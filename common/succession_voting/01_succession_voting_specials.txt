@@ -1729,7 +1729,7 @@ byzantine_elective = {
 			localisation_key = tooltip_feudal_elector_vote_infidel
 			NOT = { has_religion_feature = religion_cosmopolitan }
 			NOT = { has_religion_feature = religion_dogmatic }
-			NOT = { religion_group = indian_group }
+			NOT = { religion_group = bud_group }
 			FROM = { 
 				religion_group = ROOT
 				NOT = { religion = ROOT } 
@@ -1741,7 +1741,7 @@ byzantine_elective = {
 			localisation_key = tooltip_feudal_elector_vote_heathen
 			NOT = { has_religion_feature = religion_cosmopolitan }
 			NOT = { has_religion_feature = religion_dogmatic }
-			NOT = { religion_group = indian_group }
+			NOT = { religion_group = bud_group }
 			NOR = { 
 				AND = {  
 					trait = sympathy_christendom
@@ -1753,11 +1753,11 @@ byzantine_elective = {
 				} 
 				AND = {  
 					trait = sympathy_pagans
-					FROM = { religion_group = pagan_group } 
+					FROM = { LI_pagan_trigger = yes } 
 				} 
 				AND = {  
 					trait = sympathy_zoroastrianism
-					FROM = { religion_group = zoroastrian_group } 
+					FROM = { religion_group = indohelen_group } 
 				} 
 				AND = {  
 					trait = sympathy_judaism
@@ -1765,7 +1765,7 @@ byzantine_elective = {
 				} 
 				AND = {  
 					trait = sympathy_indian
-					FROM = { religion_group = indian_group } 
+					FROM = { religion_group = bud_group } 
 				} 
 			}
 			FROM = { 
@@ -1778,7 +1778,7 @@ byzantine_elective = {
 			localisation_key = tooltip_feudal_elector_vote_heretic
 			NOT = { has_religion_feature = religion_cosmopolitan }
 			NOT = { has_religion_feature = religion_dogmatic }
-			NOT = { religion_group = indian_group }
+			NOT = { religion_group = bud_group }
 			FROM = { is_heresy_of = ROOT }
 		}
 		additive_modifier = { #Dogmatics will hardly ever pick an infidel.
@@ -2789,8 +2789,6 @@ byzantine_elective = {
 			is_adult = yes
 			OR = { 
 				NOT = { is_close_relative = FROM }
-				religion = zoroastrian
-				religion = messalian
 				has_religion_feature = religion_holy_family 
 				has_religion_feature = religion_feature_zun
 			} 
@@ -2836,8 +2834,6 @@ byzantine_elective = {
 			is_adult = yes
 			OR = { 
 				NOT = { is_close_relative = FROM }
-				religion = zoroastrian
-				religion = messalian
 				has_religion_feature = religion_holy_family 
 				has_religion_feature = religion_feature_zun
 			} 
@@ -3150,13 +3146,7 @@ byzantine_elective = {
 			NOT = { character = FROM } #Do not judge yourself.
 			OR = { 
 				trait = lustful 
-				AND = { 
-					religion_group = pagan_group
-					NOT = { religion = bon }
-					NOT = { religion = bon_reformed }
-					NOT = { religion = hellenic_pagan }
-					NOT = { religion = hellenic_pagan_reformed }
-				}
+				LI_pagan_trigger = yes
 			}
 			NOT = { trait = chaste }
 			FROM = { 
@@ -3170,12 +3160,7 @@ byzantine_elective = {
 			OR = { 
 				religion_group = christian 
 				religion_group = muslim
-				religion_group = jewish_group
-				religion_group = indian_group
-				religion = hellenic_pagan
-				religion = hellenic_pagan_reformed
-				religion = bon
-				religion = bon_reformed
+				religion_group = bud_group
 			}
 			NOT = { trait = gluttonous }
 			FROM = { 
@@ -3188,13 +3173,7 @@ byzantine_elective = {
 			NOT = { character = FROM } #Do not judge yourself.
 			OR = { 
 				trait = gluttonous
-				AND = { 
-					religion_group = pagan_group
-					NOT = { religion = bon }
-					NOT = { religion = bon_reformed }
-					NOT = { religion = hellenic_pagan }
-					NOT = { religion = hellenic_pagan_reformed }
-				}
+				LI_pagan_trigger = yes
 			}
 			NOT = { trait = temperate }
 			FROM = { 
@@ -3290,10 +3269,7 @@ byzantine_elective = {
 			OR = { 
 				religion_group = christian
 				religion_group = muslim
-				religion_group = jewish_group
-				religion_group = indian_group
-				religion = bon
-				religion = bon_reformed
+				religion_group = bud_group
 			}
 			NOR = { 
 				trait = proud 
@@ -3308,13 +3284,7 @@ byzantine_elective = {
 			localisation_key = tooltip_feudal_elector_vote_humble_negative
 			NOT = { character = FROM } #Do not judge yourself.
 			OR = { 
-				AND = { 
-					religion_group = pagan_group
-					NOT = { religion = bon }
-					NOT = { religion = bon_reformed }
-					NOT = { religion = hellenic_pagan }
-					NOT = { religion = hellenic_pagan_reformed }
-				}
+				LI_pagan_trigger = yes
 				trait = proud
 				trait = envious
 			}
@@ -3327,13 +3297,7 @@ byzantine_elective = {
 			localisation_key = tooltip_feudal_elector_vote_lustful_positive
 			NOT = { character = FROM } #Do not judge yourself.
 			OR = { 
-				AND = { 
-					religion_group = pagan_group
-					NOT = { religion = bon }
-					NOT = { religion = bon_reformed }
-					NOT = { religion = hellenic_pagan }
-					NOT = { religion = hellenic_pagan_reformed }
-				}
+				LI_pagan_trigger = yes
 				trait = lustful
 				trait = hedonist
 			}
@@ -3366,13 +3330,7 @@ byzantine_elective = {
 			localisation_key = tooltip_feudal_elector_vote_gluttonous_positive
 			NOT = { character = FROM } #Do not judge yourself.
 			OR = { 
-				AND = { 
-					religion_group = pagan_group
-					NOT = { religion = bon }
-					NOT = { religion = bon_reformed }
-					NOT = { religion = hellenic_pagan }
-					NOT = { religion = hellenic_pagan_reformed }
-				}
+				LI_pagan_trigger = yes
 				trait = gluttonous
 				trait = hedonist
 			}
@@ -3405,11 +3363,7 @@ byzantine_elective = {
 			localisation_key = tooltip_feudal_elector_vote_greedy_positive
 			NOT = { character = FROM } #Do not judge yourself.
 			OR = { 
-				AND = { 
-					religion_group = pagan_group
-					NOT = { religion = bon }
-					NOT = { religion = bon_reformed }
-				}
+				LI_pagan_trigger = yes
 				trait = greedy
 			}
 			FROM = { 
@@ -3423,7 +3377,7 @@ byzantine_elective = {
 			OR = { 
 				religion_group = christian
 				religion_group = muslim
-				religion_group = indian_group
+				religion_group = bud_group
 			}
 			OR = { 
 				trait = arbitrary #No need for consistency
@@ -3488,12 +3442,8 @@ byzantine_elective = {
 			value = 15
 			localisation_key = tooltip_feudal_elector_vote_proud_positive
 			NOT = { character = FROM } #Do not judge yourself.
-			religion_group = pagan_group
-			NOR = { 
-				religion = bon
-				religion = bon_reformed
-				trait = humble
-			}
+			LI_pagan_trigger = yes
+			NOT = { trait = humble }
 			FROM = { 
 				trait = proud
 			}
@@ -3505,7 +3455,7 @@ byzantine_elective = {
 			OR = { 
 				religion_group = christian
 				religion_group = muslim
-				religion_group = indian_group
+				religion_group = bud_group
 				religion_group = jewish_group
 			}
 			OR = { 
@@ -3524,12 +3474,8 @@ byzantine_elective = {
 			value = 5
 			localisation_key = tooltip_feudal_elector_vote_ambitious_positive
 			NOT = { character = FROM } #Do not judge yourself.
-			religion_group = pagan_group
-			NOR = { 
-				religion = bon
-				religion = bon_reformed
-				trait = content
-			}
+			LI_pagan_trigger = yes
+			NOT = { trait = content }
 			FROM = { 
 				trait = ambitious
 			}
@@ -3542,9 +3488,7 @@ byzantine_elective = {
 				religion_group = christian
 				religion_group = muslim
 				religion_group = jewish_group
-				religion_group = indian_group
-				religion = bon
-				religion = bon_reformed
+				religion_group = bud_group
 			}
 			OR = { 
 				trait = arbitrary #No need for consistency
@@ -3610,9 +3554,7 @@ byzantine_elective = {
 			localisation_key = tooltip_feudal_elector_vote_content_positive
 			NOT = { character = FROM } #Do not judge yourself.
 			OR = { 
-				religion = buddhist
 				religion = jain
-				religion = bon
 				pacifist = yes
 			}
 			FROM = { 
@@ -3623,12 +3565,8 @@ byzantine_elective = {
 			value = -5
 			localisation_key = tooltip_feudal_elector_vote_content_negative
 			NOT = { character = FROM } #Do not judge yourself.
-			religion_group = pagan_group
-			NOR = { 
-				trait = content
-				religion = bon
-				religion = bon_reformed
-			}
+			LI_pagan_trigger = yes
+			NOT = { trait = content }
 			FROM = { 
 				trait = content
 			}
@@ -3658,7 +3596,6 @@ byzantine_elective = {
 			religion = FROM
 			OR = { 
 				has_religion_feature = religion_cosmopolitan
-				religion = hellenic_pagan
 				trait = cynical
 			}
 			NOT = { 
@@ -3676,12 +3613,11 @@ byzantine_elective = {
 			religion = FROM
 			NOR = { 
 				has_religion_feature = religion_cosmopolitan
-				religion = hellenic_pagan
 				trait = cynical
 			}
 			OR = { 
 				is_reformed_religion = yes
-				NOT = { religion_group = pagan_group }
+				NOT = { LI_pagan_trigger = yes }
 			}
 			FROM = { 
 				trait = cynical
@@ -3912,7 +3848,7 @@ byzantine_elective = {
 			value = 10
 			localisation_key = tooltip_feudal_elector_vote_saoshyant_descendant_positive
 			NOT = { character = FROM } #Do not judge yourself.
-			religion_group = zoroastrian_group
+			religion_group = indohelen_group
 			FROM = { 
 				trait = saoshyant_descendant 
 			}
@@ -4220,15 +4156,7 @@ byzantine_elective = {
 			NOT = { character = FROM } #Do not judge yourself.
 			religion = FROM
 			NOT = { has_religion_feature = religion_cosmopolitan }
-			NOT = { religion_group = indian_group }
-			NOT = { religion = bon }
-			OR = { 
-				AND = { 
-					NOT = { has_dlc = "Holy Fury"}
-					religion = bon_reformed
-				}
-				pacifist = yes
-			}
+			NOT = { religion_group = bud_group }
 			OR = { 
 				trait = zealous
 				has_religion_feature = religion_dogmatic
@@ -4303,10 +4231,7 @@ byzantine_elective = {
 			value = 10
 			localisation_key = tooltip_feudal_elector_vote_baptized_by_pope
 			NOT = { character = FROM } #Do not judge yourself.
-			OR = { 
-				religion = catholic 
-				religion = fraticelli
-			} 
+			religion = catholic
 			religion = FROM
 			FROM = { 
 				trait = baptized_by_pope
@@ -5451,7 +5376,7 @@ hre_feudal_elective = {
 			localisation_key = tooltip_feudal_elector_vote_infidel
 			NOT = { has_religion_feature = religion_cosmopolitan }
 			NOT = { has_religion_feature = religion_dogmatic }
-			NOT = { religion_group = indian_group }
+			NOT = { religion_group = bud_group }
 			FROM = { 
 				religion_group = ROOT
 				NOT = { religion = ROOT } 
@@ -5463,7 +5388,7 @@ hre_feudal_elective = {
 			localisation_key = tooltip_feudal_elector_vote_heathen
 			NOT = { has_religion_feature = religion_cosmopolitan }
 			NOT = { has_religion_feature = religion_dogmatic }
-			NOT = { religion_group = indian_group }
+			NOT = { religion_group = bud_group }
 			NOR = { 
 				AND = {  
 					trait = sympathy_christendom
@@ -5475,11 +5400,11 @@ hre_feudal_elective = {
 				} 
 				AND = {  
 					trait = sympathy_pagans
-					FROM = { religion_group = pagan_group } 
+					FROM = { LI_pagan_trigger = yes } 
 				} 
 				AND = {  
 					trait = sympathy_zoroastrianism
-					FROM = { religion_group = zoroastrian_group } 
+					FROM = { religion_group = indohelen_group } 
 				} 
 				AND = {  
 					trait = sympathy_judaism
@@ -5487,7 +5412,7 @@ hre_feudal_elective = {
 				} 
 				AND = {  
 					trait = sympathy_indian
-					FROM = { religion_group = indian_group } 
+					FROM = { religion_group = bud_group } 
 				} 
 			}
 			FROM = { 
@@ -5500,7 +5425,7 @@ hre_feudal_elective = {
 			localisation_key = tooltip_feudal_elector_vote_heretic
 			NOT = { has_religion_feature = religion_cosmopolitan }
 			NOT = { has_religion_feature = religion_dogmatic }
-			NOT = { religion_group = indian_group }
+			NOT = { religion_group = bud_group }
 			FROM = { is_heresy_of = ROOT }
 		}
 		additive_modifier = { #Dogmatics will hardly ever pick an infidel.
@@ -6253,8 +6178,6 @@ hre_feudal_elective = {
 			is_adult = yes
 			OR = { 
 				NOT = { is_close_relative = FROM }
-				religion = zoroastrian
-				religion = messalian
 				has_religion_feature = religion_holy_family 
 				has_religion_feature = religion_feature_zun
 			} 
@@ -6300,8 +6223,6 @@ hre_feudal_elective = {
 			is_adult = yes
 			OR = { 
 				NOT = { is_close_relative = FROM }
-				religion = zoroastrian
-				religion = messalian
 				has_religion_feature = religion_holy_family 
 				has_religion_feature = religion_feature_zun
 			} 
@@ -6614,13 +6535,7 @@ hre_feudal_elective = {
 			NOT = { character = FROM } #Do not judge yourself.
 			OR = { 
 				trait = lustful 
-				AND = { 
-					religion_group = pagan_group
-					NOT = { religion = bon }
-					NOT = { religion = bon_reformed }
-					NOT = { religion = hellenic_pagan }
-					NOT = { religion = hellenic_pagan_reformed }
-				}
+				LI_pagan_trigger = yes
 			}
 			NOT = { trait = chaste }
 			FROM = { 
@@ -6635,11 +6550,7 @@ hre_feudal_elective = {
 				religion_group = christian 
 				religion_group = muslim
 				religion_group = jewish_group
-				religion_group = indian_group
-				religion = hellenic_pagan
-				religion = hellenic_pagan_reformed
-				religion = bon
-				religion = bon_reformed
+				religion_group = bud_group
 			}
 			NOT = { trait = gluttonous }
 			FROM = { 
@@ -6652,13 +6563,7 @@ hre_feudal_elective = {
 			NOT = { character = FROM } #Do not judge yourself.
 			OR = { 
 				trait = gluttonous
-				AND = { 
-					religion_group = pagan_group
-					NOT = { religion = bon }
-					NOT = { religion = bon_reformed }
-					NOT = { religion = hellenic_pagan }
-					NOT = { religion = hellenic_pagan_reformed }
-				}
+				LI_pagan_trigger = yes
 			}
 			NOT = { trait = temperate }
 			FROM = { 
@@ -6755,9 +6660,7 @@ hre_feudal_elective = {
 				religion_group = christian
 				religion_group = muslim
 				religion_group = jewish_group
-				religion_group = indian_group
-				religion = bon
-				religion = bon_reformed
+				religion_group = bud_group
 			}
 			NOR = { 
 				trait = proud 
@@ -6772,13 +6675,7 @@ hre_feudal_elective = {
 			localisation_key = tooltip_feudal_elector_vote_humble_negative
 			NOT = { character = FROM } #Do not judge yourself.
 			OR = { 
-				AND = { 
-					religion_group = pagan_group
-					NOT = { religion = bon }
-					NOT = { religion = bon_reformed }
-					NOT = { religion = hellenic_pagan }
-					NOT = { religion = hellenic_pagan_reformed }
-				}
+				LI_pagan_trigger = yes
 				trait = proud
 				trait = envious
 			}
@@ -6791,13 +6688,7 @@ hre_feudal_elective = {
 			localisation_key = tooltip_feudal_elector_vote_lustful_positive
 			NOT = { character = FROM } #Do not judge yourself.
 			OR = { 
-				AND = { 
-					religion_group = pagan_group
-					NOT = { religion = bon }
-					NOT = { religion = bon_reformed }
-					NOT = { religion = hellenic_pagan }
-					NOT = { religion = hellenic_pagan_reformed }
-				}
+				LI_pagan_trigger = yes
 				trait = lustful
 				trait = hedonist
 			}
@@ -6830,13 +6721,7 @@ hre_feudal_elective = {
 			localisation_key = tooltip_feudal_elector_vote_gluttonous_positive
 			NOT = { character = FROM } #Do not judge yourself.
 			OR = { 
-				AND = { 
-					religion_group = pagan_group
-					NOT = { religion = bon }
-					NOT = { religion = bon_reformed }
-					NOT = { religion = hellenic_pagan }
-					NOT = { religion = hellenic_pagan_reformed }
-				}
+				LI_pagan_trigger = yes
 				trait = gluttonous
 				trait = hedonist
 			}
@@ -6869,11 +6754,7 @@ hre_feudal_elective = {
 			localisation_key = tooltip_feudal_elector_vote_greedy_positive
 			NOT = { character = FROM } #Do not judge yourself.
 			OR = { 
-				AND = { 
-					religion_group = pagan_group
-					NOT = { religion = bon }
-					NOT = { religion = bon_reformed }
-				}
+				LI_pagan_trigger = yes
 				trait = greedy
 			}
 			FROM = { 
@@ -6887,7 +6768,7 @@ hre_feudal_elective = {
 			OR = { 
 				religion_group = christian
 				religion_group = muslim
-				religion_group = indian_group
+				religion_group = bud_group
 			}
 			OR = { 
 				trait = arbitrary #No need for consistency
@@ -6952,12 +6833,8 @@ hre_feudal_elective = {
 			value = 15
 			localisation_key = tooltip_feudal_elector_vote_proud_positive
 			NOT = { character = FROM } #Do not judge yourself.
-			religion_group = pagan_group
-			NOR = { 
-				religion = bon
-				religion = bon_reformed
-				trait = humble
-			}
+			LI_pagan_trigger = yes
+			NOT = { trait = humble }
 			FROM = { 
 				trait = proud
 			}
@@ -6969,7 +6846,7 @@ hre_feudal_elective = {
 			OR = { 
 				religion_group = christian
 				religion_group = muslim
-				religion_group = indian_group
+				religion_group = bud_group
 				religion_group = jewish_group
 			}
 			OR = { 
@@ -6988,12 +6865,8 @@ hre_feudal_elective = {
 			value = 5
 			localisation_key = tooltip_feudal_elector_vote_ambitious_positive
 			NOT = { character = FROM } #Do not judge yourself.
-			religion_group = pagan_group
-			NOR = { 
-				religion = bon
-				religion = bon_reformed
-				trait = content
-			}
+			LI_pagan_trigger = yes
+			NOT = { trait = content }
 			FROM = { 
 				trait = ambitious
 			}
@@ -7006,9 +6879,7 @@ hre_feudal_elective = {
 				religion_group = christian
 				religion_group = muslim
 				religion_group = jewish_group
-				religion_group = indian_group
-				religion = bon
-				religion = bon_reformed
+				religion_group = bud_group
 			}
 			OR = { 
 				trait = arbitrary #No need for consistency
@@ -7074,9 +6945,7 @@ hre_feudal_elective = {
 			localisation_key = tooltip_feudal_elector_vote_content_positive
 			NOT = { character = FROM } #Do not judge yourself.
 			OR = { 
-				religion = buddhist
 				religion = jain
-				religion = bon
 				pacifist = yes
 			}
 			FROM = { 
@@ -7087,12 +6956,8 @@ hre_feudal_elective = {
 			value = -5
 			localisation_key = tooltip_feudal_elector_vote_content_negative
 			NOT = { character = FROM } #Do not judge yourself.
-			religion_group = pagan_group
-			NOR = { 
-				trait = content
-				religion = bon
-				religion = bon_reformed
-			}
+			LI_pagan_trigger = yes
+			NOT = { trait = content }
 			FROM = { 
 				trait = content
 			}
@@ -7122,7 +6987,6 @@ hre_feudal_elective = {
 			religion = FROM
 			OR = { 
 				has_religion_feature = religion_cosmopolitan
-				religion = hellenic_pagan
 				trait = cynical
 			}
 			NOT = { 
@@ -7140,12 +7004,11 @@ hre_feudal_elective = {
 			religion = FROM
 			NOR = { 
 				has_religion_feature = religion_cosmopolitan
-				religion = hellenic_pagan
 				trait = cynical
 			}
 			OR = { 
 				is_reformed_religion = yes
-				NOT = { religion_group = pagan_group }
+				NOT = { LI_pagan_trigger = yes }
 			}
 			FROM = { 
 				trait = cynical
@@ -7376,7 +7239,7 @@ hre_feudal_elective = {
 			value = 10
 			localisation_key = tooltip_feudal_elector_vote_saoshyant_descendant_positive
 			NOT = { character = FROM } #Do not judge yourself.
-			religion_group = zoroastrian_group
+			religion_group = indohelen_group
 			FROM = { 
 				trait = saoshyant_descendant 
 			}
@@ -7684,15 +7547,7 @@ hre_feudal_elective = {
 			NOT = { character = FROM } #Do not judge yourself.
 			religion = FROM
 			NOT = { has_religion_feature = religion_cosmopolitan }
-			NOT = { religion_group = indian_group }
-			NOT = { religion = bon }
-			OR = { 
-				AND = { 
-					NOT = { has_dlc = "Holy Fury"}
-					religion = bon_reformed
-				}
-				pacifist = yes
-			}
+			NOT = { religion_group = bud_group }
 			OR = { 
 				trait = zealous
 				has_religion_feature = religion_dogmatic
@@ -7767,10 +7622,7 @@ hre_feudal_elective = {
 			value = 10
 			localisation_key = tooltip_feudal_elector_vote_baptized_by_pope
 			NOT = { character = FROM } #Do not judge yourself.
-			OR = { 
-				religion = catholic 
-				religion = fraticelli
-			} 
+			religion = catholic
 			religion = FROM
 			FROM = { 
 				trait = baptized_by_pope
